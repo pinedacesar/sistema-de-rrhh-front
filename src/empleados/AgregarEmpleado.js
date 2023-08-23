@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function AgregarEmpleado() {
+  const urlBase = process.env.REACT_APP_urlBase;
   let navegacion = useNavigate();
 
   const [empleado, setEmpleado] = useState({
@@ -20,7 +21,6 @@ export default function AgregarEmpleado() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const urlBase = 'http://localhost:8080/rh-app/empleados';
     await axios.post(urlBase, empleado);
     // Redirigimos a la pagina de inicio
     navegacion('/');

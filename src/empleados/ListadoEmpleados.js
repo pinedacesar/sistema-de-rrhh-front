@@ -4,7 +4,7 @@ import { NumericFormat } from 'react-number-format';
 import { Link } from 'react-router-dom';
 
 export default function ListadoEmpleados() {
-  const urlBase = 'http://localhost:8080/rh-app/empleados';
+  const urlBase = process.env.REACT_APP_urlBase;
 
   const [empleados, setEmpleados] = useState([]);
 
@@ -14,8 +14,6 @@ export default function ListadoEmpleados() {
 
   const cargarEmpleados = async () => {
     const resultado = await axios.get(urlBase);
-    console.log('Resultado cargar Empleados');
-    console.log(resultado.data);
     setEmpleados(resultado.data);
   };
 
